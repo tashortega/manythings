@@ -1,0 +1,53 @@
+var nums = [150,73,25,40];
+var numss = [85, 10, 100, 50];
+
+var mousexcolor;
+var mouseycolor;
+
+var gcolor = 25;
+var bcolor = 150;
+
+function setup() {
+	createCanvas(windowWidth, windowHeight);
+}
+
+function draw() {
+    background (180);
+    
+    fill (255, 0, 255);
+    for (var i2 = 0; i2 < 4; i2++) {
+        ellipse(i2*100+400, i2*200+200, nums[i2], numss[i2]);    
+    }
+    
+    fill(255, 255, 0, 13);
+    for (var i = 0; i < 4; i++) {
+        rect(i*100+500, i*100+100, numss[i], nums[i]);
+    }   
+    
+    
+    mousexcolor = map (mouseX, 0, width, 0, 255);
+    mouseycolor = map (mouseY, 0, height, 0, 255);
+    console.log(mouseycolor);
+    
+    fill(mousexcolor,gcolor,bcolor,mouseycolor);
+    for (var i = 0; i <10; i++) {
+        var x1 = i*150;
+        var y1 = i*72;
+        var x2 = i*108;
+        var y2 = i*273;
+        var x3 = i*6;
+        var y3 = i*73;
+        triangle(x1,y1,x2,y2,x3,y3);
+    }
+    
+}
+
+function keyTyped() {
+  if (key === 'g') {
+    gcolor = 150;
+      bcolor = 25;
+  } else if (key === 'b') {
+     gcolor = 25;
+    bcolor = 150;
+  }
+}
